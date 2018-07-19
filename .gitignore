@@ -1,3 +1,5 @@
 *.swp
 .ipynb_checkpoints
 Python-GUI-Programming-Cookbook*
+__pycache__
+*.swp
