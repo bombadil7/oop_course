@@ -1,4 +1,5 @@
 import unittest
+from functools import reduce
 
 def factorize(x):
     """ Factorize positive integer and return its factors.
@@ -11,6 +12,29 @@ def factorize(x):
     if not x >= 0:
         raise ValueError 
 
+    if x == 0: return (0,)
+    elif x == 1: return (1,)
+
+    factors = []
+    for f in range(2, x):
+        if x % f == 0:
+            combined = False
+            for a in factors:
+                for b in factors:
+                    if a*b == f:
+                        combined = True
+            if not combined:
+                factors.append(f)
+            if reduce(lambda x, y: x*y, factors) == x:
+                return tuple(factors)
+    if len(factors) == 0:
+        factors.append(x)
+
+    while reduce(lambda x, y: x*y, factors) != x:
+        factors.append(factors[0])
+        i += 1
+
+    return tuple(factors)
 
 class TestFactorize(unittest.TestCase):
     def test_wrong_types_raise_exception(self):
