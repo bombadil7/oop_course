@@ -39,12 +39,15 @@ class TestFactorize(unittest.TestCase):
             self.assertEqual(factorize(29), (29,))
 
     def test_two_simple_multipliers(self):
-        for n, fact_n in ((6, (2, 3)), (26, (2, 13)), (121, (11, 11))):
+        cases = [(6, (2, 3)), (26, (2, 13)), (121, (11, 11))]
+        for n, fact_n in cases:
             with self.Subtest(i=n):
                 self.assertEqual(factorize(n), fact_n)
 
     def test_many_multiplyers(self):
-        for n, fact_n in ((1001, (7, 11, 13)), (9699690, (2, 3, 5, 7, 11, 13, 17, 19))):
+        cases = [(1001, (7, 11, 13)), 
+                (9699690, (2, 3, 5, 7, 11, 13, 17, 19))]
+        for n, fact_n in cases:
             with self.Subtest(i=n):
                 self.assertEqual(factorize(n), fact_n)
 
