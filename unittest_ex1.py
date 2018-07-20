@@ -1,9 +1,5 @@
 import unittest
-def fib(n):
-    """
-    Calculates fibonacci number by its index
-    """
-    pass
+from fib import fib
 
 class TestFibonacciNumbers(unittest.TestCase):
     def test_zero(self):
